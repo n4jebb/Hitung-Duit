@@ -2,61 +2,28 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Keuangan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Hitung Duit</title>
     <link rel="apple-touch-icon" href="logo.png">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: sans-serif; background-color: #f4f4f4; }
-        iframe { border: none; width: 100%; height: 100%; display: none; }
-        .login-box { max-width: 320px; margin: 100px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
-        button { width: 96%; padding: 10px; background: #007aff; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        .error { color: red; font-size: 14px; margin-top: 5px; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Form Login Bawaan GitHub Pages -->
-    <div id="loginForm" class="login-box">
-        <h3>Masuk ke Aplikasi</h3>
-        <input type="password" id="passkey" placeholder="Masukkan PIN / Sandi">
-        <button onclick="prosesLogin()">Masuk</button>
-        <div id="errorMessage" class="error"></div>
-    </div>
-
-    <!-- Iframe Google Apps Script -->
     <!-- Ganti URL di bawah dengan URL Google Web App (/exec) Anda -->
-    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbyqsZ4wpJHsshJZ4XsFvLwgtPQtj-bV0HZMaCMEgIWWqO5nPDzzPMk3-oFb4lNM0I_PFA/exec"></iframe>
+    <iframe src="https://script.google.com/macros/s/AKfycbyqsZ4wpJHsshJZ4XsFvLwgtPQtj-bV0HZMaCMEgIWWqO5nPDzzPMk3-oFb4lNM0I_PFA/exec"></iframe>
 
-    <script>
-        // Tentukan kata sandi aplikasi Anda di sini
-        const PIN_RAHASIA = "80808"; 
-
-        const loginForm = document.getElementById('loginForm');
-        const appFrame = document.getElementById('appFrame');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // Cek otomatis saat aplikasi dibuka di iPhone
-        window.onload = function() {
-            const statusLogin = localStorage.getItem('isLoggedIn');
-            if (statusLogin === 'true') {
-                // Jika sudah pernah login, langsung tampilkan aplikasi utama
-                loginForm.style.display = 'none';
-                appFrame.style.display = 'block';
-            }
-        };
-
-        function prosesLogin() {
-            const inputSandi = document.getElementById('passkey').value;
-            if (inputSandi === PIN_RAHASIA) {
-                // Simpan status login permanen di iPhone pengguna
-                localStorage.setItem('isLoggedIn', 'true');
-                loginForm.style.display = 'none';
-                appFrame.style.display = 'block';
-            } else {
-                errorMessage.innerText = "PIN yang Anda masukkan salah!";
-            }
-        }
-    </script>
 </body>
 </html>
